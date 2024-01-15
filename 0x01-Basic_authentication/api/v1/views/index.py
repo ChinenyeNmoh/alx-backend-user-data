@@ -32,7 +32,7 @@ def unauth() -> str:
     Return:
       - the status of the API
     """
-    return abort(401)
+    abort(401)
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
 def forbid() -> str:
@@ -40,4 +40,4 @@ def forbid() -> str:
     Return:
       - the status of the API
     """
-    return abort(403)
+    abort(403)
