@@ -27,7 +27,7 @@ def stats() -> str:
 
 
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
-def unauth() -> str:
+def unauthorized() -> str:
     """ GET /api/v1/unauthorized
     Return:
       - the status of the API
@@ -35,7 +35,7 @@ def unauth() -> str:
     abort(401)
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
-def forbid() -> str:
+def forbidden() -> str:
     """ GET /api/v1/unauthorized
     Return:
       - the status of the API
