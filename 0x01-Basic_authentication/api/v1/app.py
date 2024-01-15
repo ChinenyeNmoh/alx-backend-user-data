@@ -20,7 +20,7 @@ elif (os.getenv("AUTH_TYPE") == "basic_auth"):
 
 
 @app.before_request
-def before_request()-> None:
+def before_request() -> None:
     """ Before request handler
     """
     path_List = [
