@@ -10,7 +10,7 @@ from os import getenv
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
-	""" POST /api/v1/auth_session/login
+    """ POST /api/v1/auth_session/login
     JSON body:
     - email
     - password
@@ -46,11 +46,10 @@ def login() -> str:
 
 @app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
 def logout() -> str:
-	"""Delete route"""
-	from api.v1.app import auth
-	is_delete = auth.destroy_session(request)
-	if is_delete:
-		return jsonify({}), 200
-	else:
-		abort(404)
-
+    """Delete route"""
+    from api.v1.app import auth
+    is_delete = auth.destroy_session(request)
+    if is_delete:
+        return jsonify({}), 200
+    else:
+        abort(404)
