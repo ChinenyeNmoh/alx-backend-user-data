@@ -10,6 +10,16 @@ from os import getenv
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
+	""" POST /api/v1/auth_session/login
+    JSON body:
+    - email
+    - password
+    Return:
+    - User object JSON represented
+    - 400 if email or password is missing or empty
+    - 404 if no User found
+    - 401 if the password is not the one of the user found
+    """
     user_email = request.form.get('email')
     user_password = request.form.get('password')
     
@@ -28,7 +38,6 @@ def login() -> str:
             from api.v1.app import auth
             user_id = user.id
             session_id = auth.create_session(user_id)
-            print(f"Type of session_id: {type(session_id)}, Value: {session_id}")
             session_user_json = jsonify(user.to_json())
             session_user_json.set_cookie(getenv('SESSION_NAME'), session_id)
             return session_user_json
