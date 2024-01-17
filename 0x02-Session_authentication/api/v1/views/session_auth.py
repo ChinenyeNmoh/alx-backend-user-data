@@ -22,17 +22,17 @@ def login() -> str:
     """
     user_email = request.form.get('email')
     user_password = request.form.get('password')
-    
+
     if not user_email:
         return jsonify({"error": "email missing"}), 400
     if not user_password:
         return jsonify({"error": "password missing"}), 400
-    
+
     user_list = User.search({'email': user_email})
-    
+
     if not user_list:
         return jsonify({"error": "no user found for this email"}), 404
-    
+
     for user in user_list:
         if user.is_valid_password(user_password):
             from api.v1.app import auth
@@ -45,7 +45,11 @@ def login() -> str:
             return jsonify({"error": "wrong password"}), 401
 
 
-@app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
+@app_views.route(
+    '/auth_session/logout',
+    methods=['DELETE'],
+    strict_slashes=False
+    )
 def logout() -> str:
     """Delete route"""
     from api.v1.app import auth
