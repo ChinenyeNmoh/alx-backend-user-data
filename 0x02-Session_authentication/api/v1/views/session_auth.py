@@ -44,6 +44,7 @@ def login() -> str:
         else:
             return jsonify({"error": "wrong password"}), 401
 
+
 @app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
 def logout() -> str:
     """Delete route"""
