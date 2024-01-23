@@ -44,9 +44,7 @@ class Auth:
                 password.encode('utf-8'),
                 user.hashed_password
                 )
-            if isMatch:
-                return True
-            return False
+            return isMatch
         except NoResultFound:
             return False
 
